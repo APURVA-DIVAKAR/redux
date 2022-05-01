@@ -21,3 +21,13 @@ export const getTodoIsSuccess = (payload)=>({
     type:GET_TODO_SUCCESS,
     payload   
 })
+
+
+
+
+export const getTodosData=()=>(dispatch)=>{
+    fetch("http://localhost:8080/todos")
+    .then((res)=>res.json()) 
+    .then((res)=>dispatch(getTodoIsSuccess(res)))
+    .catch(()=>dispatch(getTodoIsError()))
+}

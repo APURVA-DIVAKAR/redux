@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {v4 as uuid} from 'uuid'
-import {getTodoIsLoading,getTodoIsError,getTodoIsSuccess} from '../../redux/Todo/action'
+import {getTodoIsLoading,getTodoIsError,getTodoIsSuccess, getTodosData} from '../../redux/Todo/action'
 import { useDispatch,useSelector } from 'react-redux'
 // const InputTodo = () => {
 //     const[title,setTitle]=useState("");
@@ -31,11 +31,8 @@ const InputTodo = () => {
        },
        body: JSON.stringify(payload)
      }).then(()=>{
-       dispatch(getTodoIsLoading())
-       fetch("http://localhost:8080/todos")
-       .then((res)=>res.json())
-       .then((res)=>dispatch(getTodoIsSuccess(res)))
-       .catch((err)=>dispatch(getTodoIsError(err)))
+      //getTodosData(dispatch)
+      dispatch(getTodosData())
      })
     setTitle("")
   }
